@@ -104,13 +104,7 @@ function run_InjectSecondStageInstaller()
 			wget https://twisteros.com/wine.tgz
 			tar -xvzf wine.tgz
 			rm wine.tgz
-			
-			# Give PRoot an X server ('screen 1') to send video to (and don't stop the X server after last client logs off)
-			sudo apt install xserver-xephyr -y
-			echo -e >> ~/.bashrc "\n# Initialize X server every time user logs in"
-			echo >> ~/.bashrc "export DISPLAY=localhost:0"
-			echo >> ~/.bashrc "sudo Xephyr :1 -noreset -fullscreen &"
-			
+						
 			# Automatically start Box86 and Wine when the user logs in
 			echo >> ~/.bashrc "# start Box86 and Wine"
 			echo >> ~/.bashrc "DISPLAY=:1 box86 ~/wine/bin/wine explorer /desktop=wine,1280x720 explorer"
